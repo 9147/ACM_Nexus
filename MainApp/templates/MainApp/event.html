@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <title> Login and Registration Form </title>
+    <link rel="stylesheet" href="{% static 'MainApp/event.css'%}">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+{% endblock head %}
+
+{% block body %}
+<div class="outer-container">
+    <div class="inner-container">
+        <img src="{% static 'images/cover.jpg' %}" width="100%" alt="">
+        <h2 class="title">FRONT-END FIESTADESIGN SHOWDOWN</h2>
+        <hr style="width:50%", size="3", color=black>  
+        <div class="description">🌟 Embark on a Digital Odyssey: Front-End Fiesta by ACM KLS GIT! 🚀🖥<br>
+            Hello, tech enthusiasts! 👋 Get ready for a thrilling 7-day spectacle as ACM KLS GIT introduces Front-End Fiesta – an electrifying event that merges technology and creativity! 🏫<br>
+            📢 The Challenge: Transforming Dreams into Digital Realities<br>
+            We're on a mission to revolutionize the online presence of 3 government schools. Each school will host 15 dynamic teams, each comprising 3 brilliant minds. Your mission, should you choose to accept it? Craft an extraordinary website for your assigned school! 🌐</br></br>
+            🗓 Event Schedule:</br>
+            * Start Date: December 26, 2023</br>
+            * End Date: January 2, 2024</br></br>
+            🌐 Website Development:</br>
+            Teams will be assigned to specific schools, and over the first 4 days, create a user-friendly and informative website for your designated school. Showcase your skills and highlight the best features of each institution.</br>
+        </br>
+            🏆  The Finale Showdown!</br>
+            On the final day, all teams will converge for an exhilarating Front-End Fiesta event. Brace yourselves for 3 intense judging rounds where the best of the best will be crowned! 🥇🥈🥉</br>
+            Ready to join the digital revolution? 🚀 Don't miss out on this chance to showcase your talents and make a lasting impact on education.</br>
+        </br>
+            Front-End Fiesta - Register Now!</br>
+            Let's redefine the digital landscape together! 🌐✨ #FrontEndFiesta #TechRevolution #ACMKLSGIT</div>
+    </div>
+</div>
+<div class="button">Apply</div>
+
+{% endblock body %}
