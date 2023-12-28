@@ -9,13 +9,22 @@ class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(_("email address"), unique=True)
     USN = models.CharField(max_length=10, unique=True)
-    OTP = models.CharField(max_length=6, unique=True,default='000000')
     USERNAME_FIELD = "email"
     year=models.CharField(max_length=4,default='2025')
-    verified=models.BooleanField(default=False)
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
 
     def __str__(self):
         return self.email
+
+
+class Team(models.Model):
+    team_name=models.CharField(max_length=100,primary_key=True)
+    team_leader=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    team_member1=models.ForeignKey(CustomUser,on_delete=models.CASCADE,related_name='team_member1',null=True,blank=True)
+    team_member2=models.ForeignKey(CustomUser,on_delete=models.CASCADE,related_name='team_member2',null=True,blank=True)
+    team_member3=models.ForeignKey(CustomUser,on_delete=models.CASCADE,related_name='team_member3',null=True,blank=True)
+
+    def __str__(self):
+        return self.team_name

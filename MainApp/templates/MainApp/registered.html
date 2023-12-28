@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'MainApp/registered.css' %}">
+{% endblock head %}
+{% block body %}
+<form action="../deleteteam/{{team.team_name}}" method="post" class="block" id="block" onsubmit="return validateForm()">
+    <div class="inner-block">
+        {% csrf_token %}
+        <h1>Do u really want to delete the team?</h1>
+        <div class="button">
+            <div class="cancel" onclick="closeBlock()">Cancel</div>
+            <input class="submit" type="submit" value="Delete">
+        </div>
+    </div>
+</form>
+    <div id="content">
+        <h1>Welcome {{team.team_name}}!!!!!</h1>
+        <div class="conatiner-account">
+        <div class="deatils">
+        <h2>Account Details</h2>
+        <p id="{{team.id}}">Team Name: {{team.team_name}}</p>
+        <p>Team Leader: {{team.team_leader}}</p>
+            <p>Member 1: {{team.team_member1}}</p>
+            <p>Member 2: {{team.team_member2}}</p>
+            <p>Member 3: {{team.team_member3}}</p>
+    </div>
+            {% if user.email == team.team_leader.email %}<div class="buttons">
+                <div class="button-container">
+                <a onclick="openBlock()">Delete Team</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock body %}
+{% block script %}
+    <script type="text/javascript" src="{% static '/MainApp/registered.js' %}"></script>
+{% endblock script %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'MainApp/recovery.css' %}">
+{% endblock head %}
+{% block body %}
+    <form class="inner-container" method="post" action="{% url 'MainApp:sendpassword' %}">
+        {% csrf_token %}
+        <label for="email" class="label-email">Enter registered mail id </label><input id="email" name="email" type="email" placeholder="Email id" required>
+        <input type="submit" class="submit">
+    </form>
+{% endblock body %}

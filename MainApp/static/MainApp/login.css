@@ -1,10 +1,16 @@
 /* Google Font Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-.outer-container{
+body{
+  position: relative;
+  z-index: -2;
+}
+.outer-container {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: -1;
 }
 .conatiner-inner{
   z-index: 0;

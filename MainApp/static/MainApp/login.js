@@ -28,3 +28,11 @@ function login(){
     });
 
 }
+
+function validateForm() {
+    var year = document.getElementById("year").value;
+    if(year<2024 || year>2028){
+        return false
+    }
+    return true;
+  }

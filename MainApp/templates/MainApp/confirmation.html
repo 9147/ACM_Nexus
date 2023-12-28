@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'MainApp/recovery.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+{% endblock head %}
+{% block body %}
+    <div class="inner-container">
+        <span class="material-symbols-outlined">
+            check
+            </span>
+        <div class="text">You will receive mail in your provided mail id in a while.</div>
+    </div>
+{% endblock body %}

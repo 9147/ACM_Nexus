@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'MainApp/registration.css' %}">
+{% endblock head %}
+{% block body %}
+        
+        <form method="post" action="{% url 'MainApp:createteam' %}" class="inner-container" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <div class="title">Registration</div>
+            <div class="input-boxes">
+                <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="name" name="name" placeholder="Team Name"  required >
+                </div>
+                <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input type="email" id="email1" name="email1" placeholder="Email member 1" value="{{ user.email }}" readonly required>
+                </div>
+                <div class="input-box">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email2" name="email2" placeholder="Email member 2" required>
+                </div>
+                <div class="input-box">
+                    <i class="fas fa-lock"></i>
+                    <input type="email" id='email3' name="email3" placeholder="Email member 3" required>
+                </div>
+                <div class="input-box">
+                    <i class="fas fa-lock"></i>
+                    <input type="email" id='email4' name="email4" placeholder="Email member 4" required>
+                </div>
+                <div class="button input-box">
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
+        </form>
+
+{% endblock body %}
+{% block script %}
+<script type="text/javascript" src="{% static '/MainApp/registration.js' %}"></script>
+{% endblock script %}

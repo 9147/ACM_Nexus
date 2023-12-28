@@ -1,0 +1,122 @@
+#content {
+    padding: 1rem 0 0 0;
+    display: flex;
+    /* position: absolute; */
+    right: 12.5vw;
+    width: 80vw;
+    border: solid 1px white;
+    /* background: transparent; */
+    /* backdrop-filter: blur(20px); */
+    border-radius: 1.2rem;
+    /* padding: 2rem; */
+    min-height: 60vh;
+    flex-direction: column;
+    border-bottom: none;
+}
+.Start-button {
+    background-color: rebeccapurple;
+    display: flex;
+    max-width: 10rem;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    border-radius: 10%;
+    cursor: pointer;
+}
+.Start-button:hover {
+    background-color: rgba(102, 51, 153, 0.741);
+    color:black;
+}
+.block {
+    margin-top:-2rem;
+    backdrop-filter: blur(11px);
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    height: calc( 100% - 7rem );
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.inner-block{
+    display:flex;
+    gap:2rem;
+    max-width: 90%;
+    flex-direction:column;
+}
+.inner-block>input{
+    background-color: transparent;
+    border: solid 1px;
+    border-radius: 10%;
+    font-size:2rem ;
+    padding:.2rem;
+}
+.inner-block>.button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.button>* {
+    display: flex;
+    width: 50%;
+    cursor: pointer;
+    height: 2rem;
+    text-align: center;
+    background-color: #9dedd275;
+    border: solid 1px;
+    justify-content: center;
+    align-items: center;
+}
+.button>*:hover{
+    background-color: #caeadf;
+    color:black;
+
+}
+#content h1{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.conatiner-account {
+    gap: 1rem;
+    flex-grow: 2;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.buttons {
+    display: flex;
+    width: 100%;
+    flex-grow: 2;
+    align-items: flex-end;
+    /* justify-content: space-around; */
+}
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    height: 3rem;
+}
+.button-container>* {
+    /* gap: 1rem; */
+    /* padding: 1rem; */
+    display: flex;
+    background-color: #7fffd4;
+    border: solid 1px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 50%;
+    /* text-align: center; */
+    align-items: center;
+    justify-content: center;
+}
+.button-container>*:hover {
+    background-color: #caeadf;
+    color:black;
+}
+.deatils{
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding:1rem;
+}

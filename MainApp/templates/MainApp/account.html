@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'MainApp/account.css' %}">
+{% endblock head %}
+{% block body %}
+<form action="updatePassword/{{user.id}}" method="post" class="block" id="block" onsubmit="return validateForm()">
+    <div class="inner-block">
+        {% csrf_token %}
+        <h1>Change Password</h1>
+        <input type="text" id="password" name="password" class="pass" placeholder="Password" required>
+        <input type="password" id="password2"  class="pass" placeholder="Re-Enter Password" required>
+        <div class="button">
+            <div class="cancel" onclick="closeBlock()">Cancel</div>
+            <input class="submit" type="submit" value="Submit">
+        </div>
+    </div>
+</form>
+    <div id="content">
+        <h1>Welcome {{user.first_name}}!!!!!</h1>
+        <div class="conatiner-account">
+        <div class="deatils">
+        <h2>Account Details</h2>
+        <p id="{{user.id}}">Username: {{user}}</p>
+        <p>Name: {{user.first_name}}</p>
+    </div>
+            <div class="buttons">
+                <div class="button-container">
+                <a onclick="openBlock()">Change Password</a>
+        <a href="{% url 'MainApp:logout' %}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+{% block script %}
+    <script type="text/javascript" src="{% static '/MainApp/account.js' %}"></script>
+{% endblock script %}
