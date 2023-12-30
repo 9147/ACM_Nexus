@@ -233,3 +233,14 @@ def problems(request):
 
     f.close()
     return render(request, 'MainApp/problems.html', context={'theme': theme.items(), 'data': s.items()})
+
+def getteams(request):
+    if request.user.is_superuser:
+        f=open(os.path.join(settings.STATIC_ROOT,'data/teams.csv'),'w',newline='')
+        writer=csv.writer(f)
+        writer.writerow(['Team Name','Team Leader','Team Member 1','Team Member 2','Team Member 3','Problem Number'])
+        for team in Team.objects.all():
+            writer.writerow([team.team_name,team.team_leader.email,team.team_member1.email,team.team_member2.email,team.team_member3.email,team.problem_no])
+        f.close()
+        return JsonResponse({'data':list(Team.objects.all().values())})
+    return HttpResponse(status=404)
