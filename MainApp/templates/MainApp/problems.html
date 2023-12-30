@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <title>About</title>
+    <link rel="stylesheet" href="{% static 'MainApp/problems.css'%}">
+    
+{% endblock head %}
+
+{% block body %}
+    <div class="inner-container">
+        <div class="about-header">
+            <span class="title-about">Problems</span>
+        </div>
+        <main class="main">
+          {% for themes,val in theme %}
+            <section class="section">
+              <h2 class="heading">{{val}}</h2>
+              {% for problems in data %}
+                 {% if problems.0 == themes %} 
+                    {% for problem in problems.1 %}
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-header-title">Problem No: {{problem.0}}</h3>
+                            </div>
+                            <div class="card-content">
+                                <p>{{problem.1}}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                 {%endif%}
+              {% endfor %}
+            </section>
+        {% endfor %}
+          </main>
+
+</div>
+
+
+{% endblock body %}
+{% block script %}
+    <!-- <script type="text/javascript" src="{% static '/MainApp/account.js' %}"></script> -->
+{% endblock script %}

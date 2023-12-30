@@ -7,6 +7,9 @@ from django.core.mail import send_mail
 from ACM_Registration_Portal.settings import EMAIL_HOST_USER
 import random
 import string
+from django.conf import settings
+import os
+import csv
 
 def generate_random_password(length):
     characters = string.ascii_letters + string.digits
@@ -127,28 +130,26 @@ def registration(request):
 def createteam(request):
     if request.method=='POST':
         team_name=request.POST['name']
-        team_leader=request.POST['email1']
-        team_member1=request.POST['email2']
-        team_member2=request.POST['email3']
-        team_member3=request.POST['email4']
         if Team.objects.filter(team_name=team_name).exists():
             return HttpResponse(status=404)
         else:
-            val=Team(team_name=team_name,team_leader=CustomUser.objects.get(email=team_leader),team_member1=CustomUser.objects.get(email=team_member1),team_member2=CustomUser.objects.get(email=team_member2),team_member3=CustomUser.objects.get(email=team_member3))
-            val.save()
-            return render(request,'MainApp/home.html')
+            return render(request,'MainApp/registration.html')
     return HttpResponse(status=404)
 
 def checkteam(request):
     if request.method=='POST':
         team_name=request.POST['name']
+        team_leader=request.POST['email1']
         team_member1 = request.POST['email2']
         team_member2 = request.POST['email3']
         team_member3 = request.POST['email4']
+        problem_number=request.POST.get('problem')
         print(team_name,team_member1,team_member2,team_member3)
         print(CustomUser.objects.filter(email=team_member1))
         if Team.objects.filter(team_name=team_name).exists():
             return HttpResponse(status=404,reason='Team Name already exists\n Try with different name')
+        elif problem_number not in [str(i) for i in range(1,26)]:
+            return HttpResponse(status=404,reason='Problem Number is not valid')
         elif not CustomUser.objects.filter(email=team_member1).exists():
             return HttpResponse(status=404,reason='Team Member 2 doesn\'t exists')
         elif not CustomUser.objects.filter(email=team_member2).exists():
@@ -162,12 +163,73 @@ def checkteam(request):
         elif Team.objects.filter(team_member3=CustomUser.objects.get(email=team_member3)).exists():
             return HttpResponse(status=404,reason='Team Member 4 already has team')
         else:
+            u1 = CustomUser.objects.get(email=team_leader)
+            u1.is_registered = True
+            u2 = CustomUser.objects.get(email=team_member1)
+            u2.is_registered = True
+            u3 = CustomUser.objects.get(email=team_member2)
+            u3.is_registered = True
+            u4 = CustomUser.objects.get(email=team_member3)
+            u4.is_registered = True
+            val = Team(team_name=team_name, team_leader=u1, team_member1=u2, team_member2=u3, team_member3=u4,
+                       problem_no=problem_number)
+            val.save()
+            u1.save()
+            u2.save()
+            u3.save()
+            u4.save()
             return JsonResponse({'data':'success'})
     return HttpResponse(status=404)
 
 def deleteteam(request,team_name):
     if request.method=='POST':
         team=Team.objects.get(team_name=team_name)
+        u1 = team.team_leader
+        u2 = team.team_member1
+        u3 = team.team_member2
+        u4 = team.team_member3
+        u1.is_registered=False
+        u2.is_registered=False
+        u3.is_registered=False
+        u4.is_registered=False
+        u1.save()
+        u2.save()
+        u3.save()
+        u4.save()
         team.delete()
         return HttpResponseRedirect('/account')
     return HttpResponse(status=404)
+
+
+def problems(request):
+    f = open(os.path.join(settings.STATIC_ROOT, 'data/data.csv'), 'r')
+    reader = csv.reader(f)
+    next(reader)
+    data_list = list(reader)
+
+    s = {}
+    theme = {}
+    no = 1
+    count = 1
+    val = "Sustainability and Environment"
+
+    for a in data_list:
+        if val == a[1]:
+            if count not in s:
+                s[count] = []
+            s[count].append((no, a[0]))
+            no += 1
+        else:
+            theme[count] = val
+            count += 1
+            val = a[1]
+
+            if count not in s:
+                s[count] = []
+            s[count].append((no, a[0]))
+            no += 1
+
+    theme[count] = val
+
+    f.close()
+    return render(request, 'MainApp/problems.html', context={'theme': theme.items(), 'data': s.items()})

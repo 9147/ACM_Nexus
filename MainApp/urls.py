@@ -20,4 +20,5 @@ urlpatterns = [
     path('createteam/',createteam,name='createteam'),
     path('checkteam/',checkteam,name='checkteam'),
     path('deleteteam/<str:team_name>',deleteteam,name='deleteteam'),
+    path('problems/',problems,name='problems'),
 ]

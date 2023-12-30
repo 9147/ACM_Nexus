@@ -5,13 +5,17 @@
 {% endblock head %}
 {% block body %}
         
-        <form method="post" action="{% url 'MainApp:createteam' %}" class="inner-container" onsubmit="return validateForm()">
+        <form method="post" action="#" id="form" class="inner-container" onsubmit="return validateForm()">
             {% csrf_token %}
             <div class="title">Registration</div>
             <div class="input-boxes">
                 <div class="input-box">
                     <i class="fas fa-user"></i>
                     <input type="text" id="name" name="name" placeholder="Team Name"  required >
+                </div>
+                <div class="input-box">
+                    <i class="fas fa-lock"></i>
+                    <input type="number" id='problem' name="problem" placeholder="Problem Number" required>
                 </div>
                 <div class="input-box">
                     <i class="fas fa-user"></i>

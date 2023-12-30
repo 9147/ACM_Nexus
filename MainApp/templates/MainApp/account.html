@@ -23,6 +23,8 @@
         <h2>Account Details</h2>
         <p id="{{user.id}}">Username: {{user}}</p>
         <p>Name: {{user.first_name}}</p>
+        {% if not user.is_registered %}<h3>Your are still not registered!!!<br/> don't miss this chance of beign a part of ACM Nexus!! </h3> {% endif %}
+        {% if user.is_registered %} <h3>Congrats!!! You are registered for the event!! </h3>{% endif %}
     </div>
             <div class="buttons">
                 <div class="button-container">

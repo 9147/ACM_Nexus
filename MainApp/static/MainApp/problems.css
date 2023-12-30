@@ -1,0 +1,95 @@
+.inner-container {
+  display: flex;
+  padding: 2rem;
+  width: 90%;
+  /* max-width: 1000px; */
+  height: 40vh;
+  flex-direction: column;
+  align-items: center;
+}
+.about-header {
+  max-width: 1240px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #00000066;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* max-width: 1240px; */
+}
+.title-about {
+    font-family: 'Rubik Lines',Roboto;
+    color: white;
+    font-size: 3rem;
+    /* font-weight: 600; */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+.main {
+  display: flex;
+  gap: 1rem;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: .5rem;
+  /* background-color: #00000066; */
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+  
+.section {
+  max-width: 400px;
+  border-radius: 10px;
+  padding: 2rem;
+  background-color: #00000066;
+  margin-bottom: 30px;
+}
+  
+.heading {
+    color: turquoise;
+    padding-bottom:2rem;
+  }
+  
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  a {
+    color: turquoise;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  .card-header-title{
+    font-family: Roboto;
+    color:white;
+    font-size: 1rem;
+    /* font-weight: 600; */
+    margin-bottom: 1rem;
+    text-align: center;
+  
+  }
+  .card{
+    margin: .5rem;
+    padding:.5rem;
+    color:white;
+    border-radius: 10px;
+    background-color: #00000095;
+    cursor: pointer;
+  }
+  .card:hover{
+    background-color: #00000075;
+    scale: 1.1;
+  }
+  @media screen and (max-width: 500px) {
+    .card:hover{
+      background-color: #000000e6;
+      scale: 1.6;
+    }
+  }
+ 
