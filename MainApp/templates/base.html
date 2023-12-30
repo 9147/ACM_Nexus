@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Rubik+Doodle+Triangles&family=Rubik+Lines&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'Images/logo.png' %}" type="image/x-icon">
     {% block head %}
     {% endblock head %}
 </head>
@@ -21,7 +22,7 @@
         <div class="header__content--flow">
             <section class="header-content--left">
                 <a href="#" class="brand-logo">
-                  <img src="{% static 'Images/logo.svg' %}" class="animate__animated  animate__jello" />
+                  <img src="{% static 'Images/logo.svg' %}" height="50px" class="animate__animated  animate__jello" />
                     <span class="logo-text animate__animated animate__bounceInDown">ACM</span>
                 </a>
                 <button class="nav-toggle">
@@ -44,9 +45,11 @@
                             <a class="nav__link" href="{% url 'MainApp:login' %}">Login</a>
                            {% endif %}
                         </li>
+                        {% if user.is_authenticated %}
                         <li class="list-item">
                             <a class="nav__link" href="{% url 'MainApp:registration' %}">Register</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </nav>
             </section>

@@ -136,7 +136,7 @@ def createteam(request):
         else:
             val=Team(team_name=team_name,team_leader=CustomUser.objects.get(email=team_leader),team_member1=CustomUser.objects.get(email=team_member1),team_member2=CustomUser.objects.get(email=team_member2),team_member3=CustomUser.objects.get(email=team_member3))
             val.save()
-            return render(request,'MainApp/registered.html')
+            return render(request,'MainApp/home.html')
     return HttpResponse(status=404)
 
 def checkteam(request):

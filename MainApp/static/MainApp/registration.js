@@ -23,14 +23,13 @@ function validateForm(){
         dataType: 'json',
         success: function (data) {
             console.log(data);
-            return true;
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(errorThrown);
             alert(errorThrown+"!!\n Team Creation Failed")
-            return false;
-            // window.location.href = "../registration/";
+            // return false;
+            window.location.href = "../registration/";
         }
     });
-    return false;
+    return true;
 }
