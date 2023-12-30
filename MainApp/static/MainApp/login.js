@@ -32,6 +32,7 @@ function login(){
 function validateForm() {
     var year = document.getElementById("year").value;
     if(year<2024 || year>2028){
+    alert("Invalid Year!!\n year should be between 2024 and 2027");
         return false
     }
     return true;
