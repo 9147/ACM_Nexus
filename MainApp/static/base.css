@@ -53,7 +53,9 @@
 
 /* end style scroll */
 
-
+.fa{
+    font-size: 2rem;
+}
 a {
     text-decoration: none;
 }

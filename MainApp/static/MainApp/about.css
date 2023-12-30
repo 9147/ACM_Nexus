@@ -62,3 +62,11 @@
     text-decoration: underline;
   }
   
+  .insta{
+    font-size:3.5rem;
+    cursor: pointer;
+  }
+  .insta:hover{
+    color: #e84393;
+    scale:1.1;
+  }
