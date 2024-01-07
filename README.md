@@ -12,7 +12,7 @@ ACM Nexus is a 24-hour coding competition organized by the ACM Students Chapter 
 ## Installation
 1. **Clone the repository:** `git clone https://github.com/9147/ACM_Nexus.git`
 2. **Install dependencies:** `pip install django`
-3. **Start the server:** python manage.py runserver
+3. **Start the server:** `python manage.py runserver`
 
 
 ## Technologies Used
